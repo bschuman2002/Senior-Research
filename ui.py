@@ -3,6 +3,8 @@ import xlrd
 from tkinter import messagebox
 
 
+# Responsible for displaying network UI to users 
+
 def run_network():
     messagebox.showinfo("Result", "test")
 
@@ -15,8 +17,8 @@ class Application(tk.Frame):
         self.create_widgets()
 
 
-
-    def create_widgets(self):
+    # Adds dropdown menus and run button as "widgets" to user interface
+    def create_widgets(self):        
         workbook = xlrd.open_workbook('idmc_disaster_all_dataset.xlsx')
         sheet = workbook.sheet_by_index(0)
         region_list = []
@@ -39,6 +41,7 @@ class Application(tk.Frame):
         category_label = tk.Label(self, text="Pick Natural Disaster Type:")
         category_label.grid(row=2, column=0)
 
+        # runs network from saved weights and biases when "run network" button is pressed
         btn = tk.Button(self.master, text="Run Network", command=run_network)
         btn.grid(row=3, column=0)
 
